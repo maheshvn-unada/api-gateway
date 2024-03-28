@@ -1,5 +1,7 @@
 version: '3'
 
+# adding comments
+# second comment
 services:
   auth:
     build:
@@ -11,18 +13,18 @@ services:
         - .:/usr/src/app
         - /usr/src/app/node_modules
     command: npm run start:dev auth
-  # api-gateway:
-  #   build:
-  #     context: ./
-  #     dockerfile: ./apps/api-gateway/Dockerfile
-  #   ports:
-  #     - '4000:5000'
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - auth
-  #   volumes:
-  #     - .:/usr/src/app
-  #     - /usr/src/app/node_modules
-  #   command: npm run start:dev api-gateway
+  api-gateway:
+    build:
+      context: ./
+      dockerfile: ./apps/api-gateway/Dockerfile
+    ports:
+      - '4000:5000'
+    env_file:
+      - .env
+    depends_on:
+      - auth
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run start:dev api-gateway
 
